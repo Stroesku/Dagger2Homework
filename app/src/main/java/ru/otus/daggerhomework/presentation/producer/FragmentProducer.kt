@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ru.otus.daggerhomework.R
 import ru.otus.daggerhomework.di.DaggerFragmentProducerComponent
-import ru.otus.daggerhomework.lession_2.ui.MainActivity2
+import ru.otus.daggerhomework.lession_2.subcomponents.ui.MainActivity2
 import ru.otus.daggerhomework.presentation.main.MainActivity
 import ru.otus.daggerhomework.presentation.receiver.FragmentReceiver
 

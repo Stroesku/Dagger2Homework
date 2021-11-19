@@ -1,11 +1,8 @@
 package ru.otus.daggerhomework.lession_2.subcomponents
 
-import dagger.Binds
-import dagger.Component
-import dagger.Module
-import dagger.Subcomponent
+import dagger.*
 import ru.otus.daggerhomework.lession_2.subcomponents.ui.Fragment2
-import ru.otus.daggerhomework.lession_2.ui.MainActivity2
+import ru.otus.daggerhomework.lession_2.subcomponents.ui.MainActivity2
 import javax.inject.Singleton
 
 
@@ -20,7 +17,7 @@ import javax.inject.Singleton
 @Singleton
 interface ParentComponent {
 
-    fun mainActivityComponent(): MainActivityComponent2.Builder
+    fun mainActivityComponent(): MainActivityComponent2.Factory
 
 }
 
@@ -55,8 +52,9 @@ interface MainActivityComponent2 {
     fun fragmentComponent(): FragmentComponent2.Factory
 
     @Subcomponent.Builder
-    interface Builder {
-        fun build(): MainActivityComponent2
+    interface Factory {
+
+        fun create(): MainActivityComponent2
     }
 }
 
@@ -79,10 +77,13 @@ interface FragmentComponent2 {
 
     @Subcomponent.Factory
     interface Factory {
-        fun build(): FragmentComponent2
+        fun create(@BindsInstance id: String): FragmentComponent2
     }
 }
 
+/**
+ * Я могу во fragmentComponent инжектить те значения, которые у меня присутствуют в моей иерархии
+ */
 @Module
 interface FragmentModule2 {
 

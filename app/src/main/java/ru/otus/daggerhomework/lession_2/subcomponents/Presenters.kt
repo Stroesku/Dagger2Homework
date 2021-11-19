@@ -1,5 +1,6 @@
 package ru.otus.daggerhomework.lession_2.subcomponents
 
+import android.util.Log
 import javax.inject.Inject
 
 //---------------------------MainActivityPresenter2------------------------------------------
@@ -23,11 +24,16 @@ class MainActivityPresenter2Impl @Inject constructor(
 //---------------------------Fragment2Presenter------------------------------------------
 
 interface Fragment2Presenter {
-    fun doSomething()
+    fun save()
 }
 
-class Fragment2PresenterImpl @Inject constructor() : Fragment2Presenter {
-    override fun doSomething() {
-        TODO("Not yet implemented")
+class Fragment2PresenterImpl @Inject constructor(
+    private val id: String,
+    private val cache: MemoryCache
+) : Fragment2Presenter {
+
+    override fun save() {
+        Log.i("11111", "save: $id")
+        cache.put("second", id)
     }
 }

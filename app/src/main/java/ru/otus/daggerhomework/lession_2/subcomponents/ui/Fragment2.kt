@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ru.otus.daggerhomework.R
+import ru.otus.daggerhomework.lession_2.subcomponents.Fragment2Presenter
 import ru.otus.daggerhomework.lession_2.subcomponents.MemoryCache
-import ru.otus.daggerhomework.lession_2.ui.MainActivity2
 import javax.inject.Inject
 
 class Fragment2 : Fragment() {
@@ -20,15 +20,20 @@ class Fragment2 : Fragment() {
     @Inject
     lateinit var memoryCache: MemoryCache
 
+    @Inject
+    lateinit var presenter: Fragment2Presenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (requireActivity() as MainActivity2)
             .activityComponent2
             .fragmentComponent()
-            .build()
+            .create("1111")
             .inject(this)
 
-        Log.i("11111", memoryCache.get("first") ?: "null empty")
+        Log.i("11111", memoryCache.hashCode().toString() ?: "null empty")
+
+        presenter.save()
     }
 
     override fun onCreateView(
