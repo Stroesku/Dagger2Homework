@@ -1,6 +1,8 @@
 package ru.otus.daggerhomework.lession_2.subcomponents
 
 import android.util.Log
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import javax.inject.Inject
 
 //---------------------------MainActivityPresenter2------------------------------------------
@@ -27,8 +29,8 @@ interface Fragment2Presenter {
     fun save()
 }
 
-class Fragment2PresenterImpl @Inject constructor(
-    private val id: String,
+class Fragment2PresenterImpl @AssistedInject constructor(
+    @Assisted private val id: String,
     private val cache: MemoryCache
 ) : Fragment2Presenter {
 

@@ -77,7 +77,7 @@ interface FragmentComponent2 {
 
     @Subcomponent.Factory
     interface Factory {
-        fun create(@BindsInstance id: String): FragmentComponent2
+        fun create(): FragmentComponent2
     }
 }
 
@@ -87,9 +87,9 @@ interface FragmentComponent2 {
 @Module
 interface FragmentModule2 {
 
-    @Binds
-    @FragmentScope2
-    fun bindsFragmentPresenter(fragment2PresenterImpl: Fragment2PresenterImpl): Fragment2Presenter
+//    @Binds
+//    @FragmentScope2
+//    fun bindsFragmentPresenter(fragment2PresenterImpl: Fragment2PresenterImpl): Fragment2Presenter
 }
 
 
